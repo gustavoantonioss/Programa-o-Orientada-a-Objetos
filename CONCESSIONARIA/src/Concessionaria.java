@@ -36,12 +36,17 @@ public class Concessionaria implements Serializable {
         return false;
     }
 
-    public void listarVeiculos() {
-        for (int i = 0; i < veiculos.size(); i++) {
-            Veiculo v = veiculos.get(i);
-            System.out.println("ID: " + v.getId() + ", Modelo: " + v.getModelo() + ", Marca: " + v.getMarca() + ", Ano: " + v.getAno());
-        }
+  public void listarVeiculos() {
+    if (veiculos.isEmpty()) {
+        System.out.println("Nenhum veículo cadastrado.");
+        return;
     }
+    
+    for (int i = 0; i < veiculos.size(); i++) {
+        Veiculo v = veiculos.get(i);
+        System.out.println("ID: " + v.getId() + ", Modelo: " + v.getModelo() + ", Marca: " + v.getMarca() + ", Ano: " + v.getAno());
+    }
+}
 
     public void salvarDados() throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("veiculos.dat"))) {
